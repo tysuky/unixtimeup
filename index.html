@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Exemplo de Página HTML</title>
-    <style>
-      /* Estilos CSS podem ser adicionados aqui */
-    </style>
-  </head>
-  <body>
-    <script>
-      function obterUnixtime() {
-        const url = 'https://worldtimeapi.org/api/timezone/America/Recife';
-        fetch(url)
-          .then(response => response.json())
-          .then(data => {
-            const unixtime = Math.floor(data.unixtime);
-            document.write("{'unixtime': '" + unixtime + "'}");
-          })
-          .catch(error => {
-            console.log("Erro ao obter a data:", error);
-          });
-      }
-      obterUnixtime();
+<head>
+    <title id="unixtime"></title>
+</head>
+<body>
+<script>
+        function obterUnixtime() {
+            const url = 'https://worldtimeapi.org/api/timezone/America/Recife';
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const unixtime = Math.floor(data.unixtime);
+                    document.getElementById("unixtime").textContent = unixtime;
+                })
+                .catch(error => {
+                    console.log("Erro ao obter a data:", error);
+                });
+        }
+
+        obterUnixtime();
     </script>
-  </body>
+</body>
 </html>
